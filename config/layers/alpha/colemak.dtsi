@@ -8,7 +8,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
-#include "definitions.dtsi"
+#include "definitions/definitions.dtsi"
 
 &caps_word {
    continue-list = <UNDERSCORE MINUS BACKSPACE>;
