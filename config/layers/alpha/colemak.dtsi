@@ -4,12 +4,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-
-/* #include "definitions/definitions.dtsi" */
-
 &caps_word {
    continue-list = <UNDERSCORE MINUS BACKSPACE>;
 };
@@ -41,11 +35,12 @@
 #define P_D LBII
 #define P_V LBIO
 // THUMB
-#define P_SYM LTI
+#define P_BACKSPACE LTI
 #define P_SPACE LTO
 
 // RIGHT SIDE
 // TOP 
+#define P_GRAVE RTIO
 #define P_J RTIO
 #define P_L RTII
 #define P_U RTM
@@ -62,20 +57,21 @@
 #define P_H RBII
 #define P_COMMA RBM
 #define P_DOT RBR
-#define P_FUN RBP
+#define P_NUM RBP
+#define P_MINUS RBP
 // THUMB
 #define P_RETURN RTO
-#define P_NUM RTI
+#define P_REP RTI
 / {
-    keymap {
-        compatible = "zmk,keymap";
+   keymap {
+      compatible = "zmk,keymap";
               colemak_layer {
 /*           34 Keys
 ╭───────────────╮ ╭─────────────────╮
 │ Q  W  F  P  B │ │ J  L  U  Y      │
 │ A  R  S  T  G │ │ M  N  E  I  O   │
-│ Z  X  C  D  V │ │ K  H  ,  . -FUN-│
-╰─────╮-SYM- SPC│ │RET -NUM-╭───────╯
+│ Z  X  C  D  V │ │ K  H  ,  . -NUM-│
+╰─────╮BSPC- SPC│ │RET -REP-╭───────╯
       ╰─────────╯ ╰─────────╯         */
                         bindings = <
 //╭──────┬──────┬──────┬──────┬───────╮╭─────┬──────┬───────────┬───────┬───────╮
@@ -83,11 +79,12 @@
 //├──────┼──────┼──────┼──────┼───────┤├─────┼──────┼───────────┼───────┼───────┤
    &kp A  &kp R  &kp S  &kp T  &kp G    &kp M  &kp N  &kp E      &kp I   &kp O
 //├──────┼──────┼──────┼──────┼───────┤├─────┼──────┼───────────┼───────┼───────┤
-   &kp Z  &kp X  &kp C  &kp D  &kp V    &kp K  &kp H  &kp COMMA  &kp DOT &mo FUN
-//╰──────┴──────┴──╮                  ││                 ╭──────┴───────┴───────╯
-                    &mo SYM  &kp SPACE   &kp RET  &mo NUM
-//                 ╰────────┴─────────╯ ╰────────┴───────╯
-   >;
-                };
-        };
+   &kp Z  &kp X  &kp C  &kp D  &kp V    &kp K  &kp H  &kp COMMA  &kp DOT &mo NUM
+//╰──────┴──────┴──╮                  ││                     ╭──┴───────┴───────╯
+                    &kp BSPC &kp SPACE   &kp RET  &key_repeat 
+//                 ╰────────┴─────────╯ ╰────────┴───────────╯
+         >;
+      };
+   };
 };
+
